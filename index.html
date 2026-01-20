@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Dark Website v4.0</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>Kawaii Website ✨</title>
     <style>
         * {
             margin: 0;
@@ -12,23 +11,38 @@
             box-sizing: border-box;
         }
 
-        @keyframes glow {
-            0%, 100% { 
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.5),
-                           0 0 40px rgba(0, 255, 255, 0.3),
-                           0 0 60px rgba(0, 255, 255, 0.1);
-            }
-            50% { 
-                box-shadow: 0 0 30px rgba(0, 255, 255, 0.8),
-                           0 0 60px rgba(0, 255, 255, 0.5),
-                           0 0 90px rgba(0, 255, 255, 0.2);
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(-10px) rotate(-2deg); }
         }
 
-        @keyframes slideIn {
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -36,73 +50,46 @@
             }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.05); }
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
-            background: #0a0e27;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(255, 20, 147, 0.1) 0%, transparent 50%);
-            color: #e0e0e0;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #fad0c4 75%, #ffd1ff 100%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
             padding: 20px;
             overflow-x: hidden;
         }
 
         .header {
             text-align: center;
-            padding: 60px 20px 40px;
-            animation: slideIn 0.8s ease-out;
+            padding: 30px 20px;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .title {
-            font-size: 4em;
-            font-weight: 900;
-            background: linear-gradient(135deg, #00ffff 0%, #8a2be2 50%, #ff1493 100%);
-            background-size: 200% 200%;
+            font-size: 3em;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #ff6b9d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientShift 5s ease infinite, pulse 3s ease-in-out infinite;
-            margin-bottom: 20px;
-            letter-spacing: -2px;
+            background-size: 200% 200%;
+            animation: gradient 3s ease infinite, bounce 3s ease-in-out infinite;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
         }
 
         .subtitle {
-            font-size: 1.5em;
-            color: #00ffff;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .version-badge {
+            font-size: 1.3em;
+            color: #ff6b9d;
+            animation: wiggle 4s ease-in-out infinite;
             display: inline-block;
-            background: linear-gradient(135deg, #00ffff 0%, #8a2be2 100%);
-            color: #0a0e27;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.8em;
-            font-weight: 700;
-            margin-top: 15px;
-            animation: glow 2s ease-in-out infinite;
         }
 
         .container {
@@ -113,135 +100,145 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
         .image-card {
-            background: rgba(20, 25, 45, 0.8);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
             padding: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
             position: relative;
             overflow: hidden;
-            animation: slideIn 1s ease-out;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(0, 255, 255, 0.3);
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid #ffb3d9;
+        }
+
+        .image-card:nth-child(1) {
+            animation-delay: 0.1s;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .image-card:nth-child(2) {
+            animation-delay: 0.2s;
+            animation: float 6s ease-in-out infinite 1.5s;
+        }
+
+        .image-card:nth-child(3) {
+            animation-delay: 0.3s;
+            animation: float 6s ease-in-out infinite 3s;
+        }
+
+        .image-card:nth-child(4) {
+            animation-delay: 0.4s;
+            animation: float 6s ease-in-out infinite 4.5s;
+        }
+
+        .image-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+            z-index: 10;
         }
 
         .image-card::before {
-            content: '';
+            content: '✨';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
-            animation: slideIn 3s ease-in-out infinite;
-        }
-
-        .image-card:nth-child(1) { animation-delay: 0.1s; }
-        .image-card:nth-child(2) { animation-delay: 0.2s; }
-        .image-card:nth-child(3) { animation-delay: 0.3s; }
-        .image-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .image-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(0, 255, 255, 0.8);
-            box-shadow: 0 20px 60px rgba(0, 255, 255, 0.3);
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            animation: sparkle 2s ease-in-out infinite;
         }
 
         .image-card img {
             width: 100%;
-            height: 280px;
+            height: 250px;
             object-fit: cover;
-            border-radius: 15px;
-            border: 2px solid rgba(0, 255, 255, 0.2);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            border: 3px solid #ffb3d9;
+            transition: transform 0.3s ease;
         }
 
         .image-card:hover img {
-            border-color: rgba(0, 255, 255, 0.6);
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(3deg);
         }
 
         .info-box {
-            background: linear-gradient(135deg, rgba(20, 25, 45, 0.9) 0%, rgba(30, 35, 55, 0.9) 100%);
+            background: linear-gradient(135deg, #ffeef7 0%, #fff0f5 100%);
             border-radius: 25px;
-            padding: 40px;
-            margin: 50px auto;
-            max-width: 700px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 600px;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(0, 255, 255, 0.3);
-            animation: slideIn 1.2s ease-out, glow 3s ease-in-out infinite;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.2);
+            border: 3px dashed #ffb3d9;
+            animation: fadeInUp 1.2s ease-out;
             position: relative;
         }
 
         .info-box::before {
-            content: '⚡';
+            content: '💖';
             position: absolute;
-            top: -20px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 3em;
-            animation: rotate 4s linear infinite, pulse 2s ease-in-out infinite;
+            font-size: 2em;
+            animation: heartBeat 2s ease-in-out infinite;
         }
 
         .info-box p {
             font-size: 1.2em;
-            color: #e0e0e0;
-            margin: 20px 0;
-            line-height: 1.8;
+            color: #c44569;
+            margin: 15px 0;
+            line-height: 1.6;
         }
 
         .info-box strong {
-            color: #00ffff;
-            font-size: 1.4em;
-            font-weight: 700;
+            color: #ff6b9d;
+            font-size: 1.3em;
         }
+
+        .sparkles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .sparkle {
+            position: absolute;
+            font-size: 1.5em;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 20%; right: 15%; animation-delay: 0.5s; }
+        .sparkle:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 1s; }
+        .sparkle:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 1.5s; }
+        .sparkle:nth-child(5) { top: 50%; left: 5%; animation-delay: 2s; }
+        .sparkle:nth-child(6) { top: 60%; right: 5%; animation-delay: 2.5s; }
 
         .badge {
             display: inline-block;
-            background: linear-gradient(135deg, #00ffff 0%, #8a2be2 100%);
-            color: #0a0e27;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.1em;
-            font-weight: 700;
-            margin-top: 30px;
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
-            animation: pulse 2s ease-in-out infinite;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .features {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
             margin-top: 20px;
-            flex-wrap: wrap;
+            box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+            animation: bounce 2s ease-in-out infinite;
+            border: 2px solid white;
         }
-
-        .feature-item {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            padding: 15px 25px;
-            border-radius: 15px;
-            color: #00ffff;
-            font-weight: 600;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .feature-item:nth-child(1) { animation-delay: 0s; }
-        .feature-item:nth-child(2) { animation-delay: 0.2s; }
-        .feature-item:nth-child(3) { animation-delay: 0.4s; }
 
         @media (max-width: 768px) {
             .title {
-                font-size: 2.5em;
+                font-size: 2em;
             }
             
             .gallery {
@@ -249,52 +246,51 @@
             }
             
             .image-card img {
-                height: 220px;
-            }
-
-            .features {
-                flex-direction: column;
+                height: 200px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="sparkles">
+        <div class="sparkle">✨</div>
+        <div class="sparkle">⭐</div>
+        <div class="sparkle">💫</div>
+        <div class="sparkle">✨</div>
+        <div class="sparkle">⭐</div>
+        <div class="sparkle">💫</div>
+    </div>
+
     <div class="header">
-        <h1 class="title">Modern Dark Gallery</h1>
-        <p class="subtitle">Version 4.0 - Latest!</p>
-        <div class="version-badge">v4.0 - Dark Theme</div>
+        <h1 class="title">Kawaii Gallery ✨ v3.0</h1>
+        <p class="subtitle">Website đã được deploy thành công! 🎉 Version 3.0 - Latest!</p>
     </div>
 
     <div class="container">
         <div class="gallery">
             <div class="image-card">
-                <img src="assets/E72435E9-B102-4E6E-A8D7-EF9C6A3B0CA2.jpg" alt="Image 1">
+                <img src="assets/E72435E9-B102-4E6E-A8D7-EF9C6A3B0CA2.jpg" alt="Kawaii Image 1">
             </div>
             <div class="image-card">
-                <img src="assets/ChatGPT Image Jan 19, 2026, 05_50_35 PM.png" alt="Image 2">
+                <img src="assets/ChatGPT Image Jan 19, 2026, 05_50_35 PM.png" alt="Kawaii Image 2">
             </div>
             <div class="image-card">
-                <img src="assets/signal-2026-01-07-131327.jpeg" alt="Image 3">
+                <img src="assets/signal-2026-01-07-131327.jpeg" alt="Kawaii Image 3">
             </div>
             <div class="image-card">
-                <img src="assets/signal-2026-01-12-131425.jpeg" alt="Image 4">
+                <img src="assets/signal-2026-01-12-131425.jpeg" alt="Kawaii Image 4">
             </div>
         </div>
 
         <div class="info-box">
             <p><strong>Website đã được deploy thành công! 🎊</strong></p>
-            <p>Đây là trang web với <strong>Dark Theme Modern</strong> - hoàn toàn khác với version trước!</p>
-            <p><strong>Version 4.0 - Complete Theme Overhaul! 🚀</strong></p>
-            
-            <div class="features">
-                <div class="feature-item">✨ Dark Mode</div>
-                <div class="feature-item">🎨 Neon Accents</div>
-                <div class="feature-item">💫 Modern UI</div>
-            </div>
-            
-            <p>⚠️ <strong>This is v4.0 with Dark Theme</strong></p>
-            <p>⏪ Rollback will go back to v3.0 (Previous Dark Theme)</p>
-            <div class="badge">⚡ Live & Running v4.0 ⚡</div>
+            <p>Đây là trang web của bạn được host trên GitHub Pages với style kawaii siêu cute! 💕</p>
+            <p><strong>Version 3.0 - Latest Update! 🚀</strong></p>
+            <p>✨ New features added! ✨</p>
+            <p>🎨 Enhanced UI/UX! 🎨</p>
+            <p>💫 Performance improvements! 💫</p>
+            <p>⚠️ This is the current version. Rollback will go back to v2.0 ⏪</p>
+            <div class="badge">✨ Live & Running v3.0 ✨</div>
         </div>
     </div>
 </body>
